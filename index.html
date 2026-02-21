@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | Research Portfolio</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --bg: #f4f7f6;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        nav {
+            background: #fff;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            z-index: 1000;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            background: white;
+            min-height: 60vh;
+            border-radius: 8px;
+            padding-top: 1rem;
+        }
+
+        .content-section { display: none; }
+        .active { display: block; animation: fadeIn 0.5s; }
+
+        .media-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        video, img {
+            max-width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .pub-card {
+            border-left: 4px solid var(--accent);
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Sandhiya Thiagarajan, Ph.D.</h1>
+    <p>Polymers | Chemistry | Rheology</p>
+</header>
+
+<nav>
+    <a onclick="showSection('bio')">Bio</a>
+    <a onclick="showSection('publications')">Publications</a>
+    <a onclick="showSection('projects')">Projects/Media</a>
+</nav>
+
+<div class="container">
+    <section id="bio" class="content-section active">
+        <h2>About Me</h2>
+        <p>Welcome! I am a researcher focused on biochemistry, complex fluid, and soft materials. My work explores the intersection of solvent-free reactions and analytical chemistry.</p>
+        <img src="headshot.jpg" alt="Profile" style="border-radius: 50%; width: 150px;">
+    </section>
+
+    <section id="publications" class="content-section">
+        <h2>Selected Publications</h2>
+        <div class="pub-card">
+            <strong>Aditya, S.S., Al Amin, M.D. and Roy, S., 2025. Atomistic simulation of crack tip shielding effect due to embedded nanoparticles in amorphous carbon.</strong><br>
+            <em>Theoretical and Applied Fracture Mechanics, p.105198.</em><br>
+            <a href="https://doi.org/10.1016/j.tafmec.2025.105198">https://doi.org/10.1016/j.tafmec.2025.105198</a>
+        </div>
+    </section>
+
+    <section id="projects" class="content-section">
+        <h2>Projects & Visualizations</h2>
+        
+        <div class="media-container">
+            <h3>Project Alpha: Real-time Simulation</h3>
+            <p>This GIF demonstrates the convergence of the algorithm:</p>
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJpZzR6NHR6NHR6NHR6NHR6NHR6NHR6NHR6NHR6NHR6NHR6NHR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3o7TKMGpxx3228XF60/giphy.gif" alt="Project Animation">
+        </div>
+
+        <div class="media-container">
+            <h3>Project Beta: Data Flythrough</h3>
+            <p>Short video demonstration:</p>
+            <video controls>
+                <source src="movie.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+</div>
+
+<script>
+    function showSection(id) {
+        // Hide all sections
+        const sections = document.querySelectorAll('.content-section');
+        sections.forEach(s => s.classList.remove('active'));
+        
+        // Show the selected one
+        document.getElementById(id).classList.add('active');
+        
+        // Update URL hash without jumping
+        window.history.pushState(null, null, `#${id}`);
+    }
+
+    // Handle initial load based on URL hash
+    window.onload = () => {
+        const hash = window.location.hash.substring(1);
+        if (hash) showSection(hash);
+    };
+</script>
+
+</body>
+</html>
+
